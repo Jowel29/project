@@ -12,7 +12,7 @@ class ProductResource extends JsonResource
         $imageUrl = $this->image
             ? (str_starts_with($this->image, 'https://') || str_starts_with($this->image, 'http://')
                 ? $this->image
-                : config('app.url') . '/' . ltrim($this->image, '/'))
+                : config('app.url').'/'.ltrim($this->image, '/'))
             : null;
 
         $data = [

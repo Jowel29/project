@@ -10,11 +10,9 @@ use App\Models\Product\Product;
 use App\Repositories\Product\ProductRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProductService
 {
-
     public function __construct(protected ProductRepository $productRepository) {}
 
     public function getAllProducts(Request $request)
@@ -73,13 +71,13 @@ class ProductService
 
     public function createProduct(array $data, CreateProductRequest $request): JsonResponse
     {
-              $data['image'] = $request->hasFile('image') ? $request->file('image')->storeAs('images', $request->file('image')->hashName(),'local_public') : null;
-            $product = $this->productRepository->create($data);
-            $data = [
-                'Product' => ProductResource::make($product),
-            ];
+        $data['image'] = $request->hasFile('image') ? $request->file('image')->storeAs('images', $request->file('image')->hashName(), 'local_public') : null;
+        $product = $this->productRepository->create($data);
+        $data = [
+            'Product' => ProductResource::make($product),
+        ];
 
-        return   ResponseHelper::jsonResponse($data, 'Product created successfully!', 201);
+        return ResponseHelper::jsonResponse($data, 'Product created successfully!', 201);
 
     }
 
@@ -92,16 +90,18 @@ class ProductService
             $path = $data['image']->storeAs('images', $data['image']->hashName(), 'local_public');
             $data['image'] = $path;
         }
-            $product = $this->productRepository->update($product, $data);
-            $data = [
-                'Product' => ProductResource::make($product),
-            ];
+        $product = $this->productRepository->update($product, $data);
+        $data = [
+            'Product' => ProductResource::make($product),
+        ];
+
         return ResponseHelper::jsonResponse($data, 'Product updated successfully!');
     }
 
     public function deleteProduct(Product $product)
     {
-            $this->productRepository->delete($product);
-            return ResponseHelper::jsonResponse([], 'Product deleted successfully!');
+        $this->productRepository->delete($product);
+
+        return ResponseHelper::jsonResponse([], 'Product deleted successfully!');
     }
 }
