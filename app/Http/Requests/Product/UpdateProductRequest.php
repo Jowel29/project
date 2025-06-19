@@ -18,6 +18,7 @@ class UpdateProductRequest extends BaseRequest
             'description' => 'sometimes|string|max:255',
             'image' => 'nullable|image',
             'price' => 'sometimes|numeric|min:1',
+            'category_id' => 'exists:categories,id',
         ];
     }
 }

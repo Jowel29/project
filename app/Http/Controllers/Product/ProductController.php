@@ -74,6 +74,7 @@ class ProductController extends Controller
      *                         @OA\Property(property="name", type="string", example="asperiores"),
      *                         @OA\Property(property="image", type="string", example="https://via.placeholder.com/640x480.png/005599?text=technics+maxime"),
      *                         @OA\Property(property="price", type="integer", example=170),
+     *                         @OA\Property(property="category", type="string", example="things"),
      *                     )
      *                 ),
      *                 @OA\Property(property="total_pages", type="integer", example=4),
@@ -165,6 +166,7 @@ class ProductController extends Controller
      *                      @OA\Property(property="image", type="string", nullable=true, example="https://via.placeholder.com/640x480.png/001166?text=apple+sit"),
      *                      @OA\Property(property="description", type="string", example="Product description goes here..."),
      *                      @OA\Property(property="price", type="number", format="float", example=593.77),
+     *                      @OA\Property(property="category", type="string", example="things"),
      *                 )
      *            ),
      *             @OA\Property(property="total_pages", type="integer", example=1),
@@ -207,11 +209,12 @@ class ProductController extends Controller
      *
      *             @OA\Schema(
      *                 type="object",
-     *                 required={"name", "price","description"},
+     *                 required={"name", "price","description","category_id"},
      *
      *                 @OA\Property(property="name", type="string", example="New Product Name"),
      *                 @OA\Property(property="description", type="string", example="New Product Description"),
      *                 @OA\Property(property="price", type="integer", example=10),
+     *                 @OA\Property(property="category_id", type="integer", example=2),
      *                 @OA\Property(property="image", type="string", format="binary")
      *             )
      *         )
@@ -236,6 +239,7 @@ class ProductController extends Controller
      *                     @OA\Property(property="image", type="string", example="http://127.0.0.1:8000/storage/images/example.png"),
      *                     @OA\Property(property="description", type="string", example="2"),
      *                     @OA\Property(property="price", type="string", example="1"),
+     *                     @OA\Property(property="category", type="string", example="things"),
      *                 )
      *             ),
      *             @OA\Property(property="status_code", type="integer", example=201)
@@ -254,6 +258,7 @@ class ProductController extends Controller
      *                 @OA\Property(property="name", type="string", example="The name field is required."),
      *                 @OA\Property(property="price", type="string", example="The price field is required."),
      *                 @OA\Property(property="description", type="string", example="The description field is required."),
+     *                 @OA\Property(property="category_id", type="string", example="The category_id field field is required."),
      *             ),
      *             @OA\Property(property="status_code", type="integer", example=400)
      *         )
@@ -311,6 +316,7 @@ class ProductController extends Controller
      *                     @OA\Property(property="image", type="string", nullable=true, example="https://via.placeholder.com/640x480.png/00aa22?text=technics+commodi"),
      *                     @OA\Property(property="description", type="string", example="type of money"),
      *                     @OA\Property(property="price", type="integer", example=829),
+     *                     @OA\Property(property="category", type="string", example="things"),
      *                  )
      *             ),
      *             @OA\Property(property="status_code", type="integer", example=200)
@@ -362,6 +368,7 @@ class ProductController extends Controller
      *                 @OA\Property(property="name", type="string", example="New Product Name"),
      *                 @OA\Property(property="description", type="string", example="New Product description"),
      *                 @OA\Property(property="price", type="integer", example=20),
+     *                 @OA\Property(property="category_id", type="integer", example=1),
      *                 @OA\Property(property="image", type="string", format="binary")
      *             )
      *         )
@@ -386,6 +393,7 @@ class ProductController extends Controller
      *                     @OA\Property(property="image", type="string", example="http://127.0.0.1:8000/storage/images/QeK7usDiGbr0hMIEbha7fJuni3HSiEWJixmWhJgV.png"),
      *                     @OA\Property(property="description", type="string", example="Red fruit"),
      *                     @OA\Property(property="price", type="string", example="20"),
+     *                     @OA\Property(property="category", type="string", example="things"),
      *              )
      *             ),
      *             @OA\Property(property="status_code", type="integer", example=200)

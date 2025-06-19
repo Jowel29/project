@@ -108,6 +108,10 @@
                                                             "price": {
                                                                 "type": "integer",
                                                                 "example": 170
+                                                            },
+                                                            "category": {
+                                                                "type": "string",
+                                                                "example": "things"
                                                             }
                                                         },
                                                         "type": "object"
@@ -178,7 +182,8 @@
                                 "required": [
                                     "name",
                                     "price",
-                                    "description"
+                                    "description",
+                                    "category_id"
                                 ],
                                 "properties": {
                                     "name": {
@@ -192,6 +197,10 @@
                                     "price": {
                                         "type": "integer",
                                         "example": 10
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": 2
                                     },
                                     "image": {
                                         "type": "string",
@@ -241,6 +250,10 @@
                                                         "price": {
                                                             "type": "string",
                                                             "example": "1"
+                                                        },
+                                                        "category": {
+                                                            "type": "string",
+                                                            "example": "things"
                                                         }
                                                     },
                                                     "type": "object"
@@ -285,6 +298,10 @@
                                                 "description": {
                                                     "type": "string",
                                                     "example": "The description field is required."
+                                                },
+                                                "category_id": {
+                                                    "type": "string",
+                                                    "example": "The category_id field field is required."
                                                 }
                                             },
                                             "type": "object"
@@ -417,6 +434,10 @@
                                                                 "type": "number",
                                                                 "format": "float",
                                                                 "example": 593.77
+                                                            },
+                                                            "category": {
+                                                                "type": "string",
+                                                                "example": "things"
                                                             }
                                                         },
                                                         "type": "object"
@@ -532,6 +553,10 @@
                                                         "price": {
                                                             "type": "integer",
                                                             "example": 829
+                                                        },
+                                                        "category": {
+                                                            "type": "string",
+                                                            "example": "things"
                                                         }
                                                     },
                                                     "type": "object"
@@ -611,6 +636,10 @@
                                         "type": "integer",
                                         "example": 20
                                     },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
                                     "image": {
                                         "type": "string",
                                         "format": "binary"
@@ -659,6 +688,10 @@
                                                         "price": {
                                                             "type": "string",
                                                             "example": "20"
+                                                        },
+                                                        "category": {
+                                                            "type": "string",
+                                                            "example": "things"
                                                         }
                                                     },
                                                     "type": "object"
@@ -802,5 +835,16 @@
             "name": "Products",
             "description": "Products"
         }
-    ]
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "in": "header",
+                "name": "Authorization",
+                "description": "Enter your Bearer token in the format `YOUR_TOKEN`. For example: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`"
+            }
+        }
+    }
 }
