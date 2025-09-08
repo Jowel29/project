@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
 Route::prefix('products')->controller(ProductController::class)->group(function () {
     Route::post('/{product}', 'update');
     Route::post('/search/name', 'searchByFilters');
 });
 Route::apiResource('products', ProductController::class);
+// Route::apiResource('products', ProductController::class);
