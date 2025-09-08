@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Category;
 
 use App\Http\Requests\Category\CreateCategoryRequest;
 use App\Http\Requests\Category\SearchCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Models\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\JsonResponse;
@@ -32,21 +33,18 @@ class CategoryController extends Controller
     }
 
     /************************************************* */
-    public function show(Category $category)
+    public function getCategoryById(Category $category): JsonResponse
     {
-        return $this->categoryService->getCategoryById();
+        return $this->categoryService->getCategoryById($category);
+    }
+    /************************************************************ */
+
+
+    public function update(UpdateCategoryRequest $request, Category $category): JsonResponse
+    {
+        return $this->categoryService->updateCategory($request->validated(), $category);
     }
 
-
-
-
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
-
-    public function destroy(Category $category)
-    {
-        //
-    }
+    /************************************************** */
+    public function destroy(Category $category) {}
 }
