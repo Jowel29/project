@@ -46,5 +46,8 @@ class CategoryController extends Controller
     }
 
     /************************************************** */
-    public function destroy(Category $category) {}
+    public function destroy(Category $category): JsonResponse
+    {
+        return $this->categoryService->deleteCategory($category);
+    }
 }

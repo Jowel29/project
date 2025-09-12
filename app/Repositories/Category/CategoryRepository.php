@@ -9,10 +9,4 @@ use App\Traits\Lockable;
 class CategoryRepository
 {
     use Lockable;
-    public function getAll($items, $column, $direction)
-    {
-        return (new Category)->getAllCategoris($items, $column, $direction);
-    }
-
-    public function filterCategoryByName(SearchCategoryRequest $request, $items) {}
 }
