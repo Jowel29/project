@@ -10,10 +10,10 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->company,
+            'name' => fake()->company(),
             'image' => fake()->optional()->imageUrl(640, 480, 'apple', true),
             'description' => fake()->realText,
-            'price' => $this->faker->randomFloat(2, 1, 1000),
+            'price' => fake()->randomFloat(2, 1, 1000),
             'category_id' => Category::inRandomOrder()->first()?->id
                 ?? Category::factory(),
         ];

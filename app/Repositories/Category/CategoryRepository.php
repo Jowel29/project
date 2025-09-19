@@ -9,19 +9,23 @@ use App\Traits\Lockable;
 class CategoryRepository
 {
     use Lockable;
+
     public function getAll($items, $column, $direction)
     {
         return (new Category)->getAllCategories($items, $column, $direction);
     }
+
     /**************** */
     public function getCategoryByFilters(SearchCategoryRequest $request, $items)
     {
         $query = Category::query();
         if ($request->has('name')) {
-            $query->where('name', 'like', '%' . $request->name . '%');
+            $query->where('name', 'like', '%'.$request->name.'%');
         }
+
         return $query->paginate($items, ['*']);
     }
+
     /********************** */
     public function createCategory(array $data)
     {
@@ -29,11 +33,13 @@ class CategoryRepository
             return Category::create($data);
         });
     }
+
     /********************* */
     public function updateCategory(array $data, Category $category)
     {
         return $this->lockForUpdate(Category::class, $category->id, function ($locked_category) use ($data) {
             $locked_category->update($data);
+
             return $locked_category;
         });
     }
@@ -43,6 +49,7 @@ class CategoryRepository
     {
         return $this->lockForDelete(Category::class, $category->id, function ($locked_category) {
             $locked_category->delete();
+
             return $locked_category;
         });
     }

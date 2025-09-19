@@ -14,7 +14,6 @@ class CategoryController extends Controller
 {
     public function __construct(protected CategoryService $categoryService) {}
 
-
     public function index(Request $request): JsonResponse
     {
         return $this->categoryService->getAllCategories($request);
@@ -38,7 +37,6 @@ class CategoryController extends Controller
         return $this->categoryService->getCategoryById($category);
     }
     /************************************************************ */
-
 
     public function update(UpdateCategoryRequest $request, Category $category): JsonResponse
     {

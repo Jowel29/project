@@ -26,8 +26,8 @@ class ProductService
         if (! in_array($column, $validColumns) || ! in_array($direction, $validDirections)) {
             return ResponseHelper::jsonResponse(
                 [],
-                'Invalid sort column or direction. Allowed columns: ' . implode(', ', $validColumns) .
-                    '. Allowed directions: ' . implode(', ', $validDirections) . '.',
+                'Invalid sort column or direction. Allowed columns: '.implode(', ', $validColumns).
+                    '. Allowed directions: '.implode(', ', $validDirections).'.',
                 400,
                 false
             );

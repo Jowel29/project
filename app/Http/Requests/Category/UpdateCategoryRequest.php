@@ -6,7 +6,6 @@ use App\Http\Requests\BaseRequest;
 
 class UpdateCategoryRequest extends BaseRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -16,7 +15,7 @@ class UpdateCategoryRequest extends BaseRequest
     {
         return [
             'name' => 'sometimes|string|max:255',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
         ];
     }
 }

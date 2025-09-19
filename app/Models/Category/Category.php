@@ -16,4 +16,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public static function getAllCategories($items, $column, $direction)
+    {
+        return self::orderBy($direction, $column)->paginate($items);
+    }
 }

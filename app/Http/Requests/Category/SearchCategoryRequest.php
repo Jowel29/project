@@ -6,7 +6,6 @@ use App\Http\Requests\BaseRequest;
 
 class SearchCategoryRequest extends BaseRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -15,7 +14,7 @@ class SearchCategoryRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'name' => 'nullable|string|max:255'
+            'name' => 'nullable|string|max:255',
         ];
     }
 }

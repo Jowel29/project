@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Product\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,9 @@ Route::prefix('products')->controller(ProductController::class)->group(function 
     Route::post('/search/name', 'searchByFilters');
 });
 Route::apiResource('products', ProductController::class);
-// Route::apiResource('products', ProductController::class);
+/************** */
+Route::prefix('categories')->controller(CategoryController::class)->group(function () {
+    Route::post('/{category}', 'update');
+    Route::post('/search/name', 'searchByFilters');
+});
+Route::apiResource('categories', CategoryController::class);

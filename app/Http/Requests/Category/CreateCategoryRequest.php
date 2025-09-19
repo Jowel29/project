@@ -6,7 +6,6 @@ use App\Http\Requests\BaseRequest;
 
 class CreateCategoryRequest extends BaseRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -16,7 +15,7 @@ class CreateCategoryRequest extends BaseRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
         ];
     }
 }

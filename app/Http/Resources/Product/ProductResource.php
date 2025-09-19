@@ -21,7 +21,7 @@ class ProductResource extends JsonResource
             'image' => $imageUrl,
             'description' => $this->description,
             'price' => $this->price,
-            'category'=>$this->category->name,
+            'category' => $this->category->name,
         ];
         if ($request->routeIs('products.index')) {
             unset($data['description']);
