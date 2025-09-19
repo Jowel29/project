@@ -26,13 +26,16 @@ class CategoryService
         $direction = $request->query('direction', 'desc');
         // **
         $valid_directions = ['asc', 'desc'];
+        $valid_columns = ['name'];
         //
-        if (! in_array($direction, $valid_directions)) {
+        if (! in_array($direction, $valid_directions) || ! in_array($column, $valid_columns)) {
             return ResponseHelper::jsonResponse(
                 [],
-                'invalid direction' . implode(', ', $valid_directions),
+                'Invalid sort column or direction. Allowed columns: ' . implode(', ', $valid_columns) .
+                    '. Allowed directions: ' . implode(', ', $valid_directions) . '.',
                 400,
                 false
+
             );
         }
         // **
@@ -92,7 +95,7 @@ class CategoryService
             $data['image'] = $path;
         }
         // **
-        $categories = $this->categoryRepository->updateCategory($data);
+        $categories = $this->categoryRepository->updateCategory($data, $category);
         $data = [
             'categories' => CategoryResource::make($categories)
         ];
